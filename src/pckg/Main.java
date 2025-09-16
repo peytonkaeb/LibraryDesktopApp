@@ -13,7 +13,7 @@ public class Main {
 	static List<Book> list = new LinkedList<Book>();
 	
 	public static void readCSV() {
-		try(FileInputStream fis = new FileInputStream("data/books.csv");
+		try (FileInputStream fis = new FileInputStream("data/books.csv");
 				Scanner scnr = new Scanner(fis);) {
 			
 			// Consume header
@@ -23,17 +23,13 @@ public class Main {
 				String line = scnr.nextLine();
 				String[] fields = safeCSVSplit(line);
 				
-				for (String s : fields) {
-					System.out.println(s);
-				}
-				
 				Book newBook = new Book(
 					    Integer.parseInt(fields[0]), // book_id
 					    Integer.parseInt(fields[1]), // goodreads_book_id
 					    Integer.parseInt(fields[2]), // best_book_id
 					    Integer.parseInt(fields[3]), // work_id
 					    Integer.parseInt(fields[4]), // books_count
-					    fields[5], // isbn 
+					    fields[5], 					// isbn 
 					    fields[6],                  // isbn13
 					    fields[7],                  // authors
 					    (int)Double.parseDouble(fields[8]),         // originalPublicationYear
@@ -65,10 +61,11 @@ public class Main {
 	
 	public static String[] safeCSVSplit(String s) {
 		
-		
-		ArrayList<String> arrayList = new ArrayList<String>();
+		String[] array = new String[23];
+		// ArrayList<String> arrayList = new ArrayList<String>();
 		var sb = new StringBuilder();
 		boolean inQuotes = false;
+		int index = 0;
 		
 		for (char c : s.toCharArray()) {
 			if (c == '"') {
@@ -80,14 +77,18 @@ public class Main {
 				}
 				else {
 					if (sb.length() != 0) {
-						arrayList.add(sb.toString());
+						// arrayList.add(sb.toString());
+						array[index] = sb.toString();
 						sb = new StringBuilder();
+						++index;
 					}
 					// temporary solution for empty string
 					else {
 						sb.append("0");
-						arrayList.add(sb.toString());
+						// arrayList.add(sb.toString());
+						array[index] = sb.toString();
 						sb = new StringBuilder();
+						++index;
 					}
 				}
 			}
@@ -96,13 +97,14 @@ public class Main {
 			}
 		}
 		// dump last string
-		arrayList.add(sb.toString());
+		// arrayList.add(sb.toString());
+		array[index] = sb.toString();
 		
-		return arrayList.toArray(new String[0]);
+		// return arrayList.toArray(new String[0]);
+		return array;
 	}
 	
 	public static void main(String[] args) {
 		readCSV();
-		
 	}
 }
