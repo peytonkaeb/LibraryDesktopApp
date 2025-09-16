@@ -62,7 +62,6 @@ public class Main {
 	public static String[] safeCSVSplit(String s) {
 		
 		String[] array = new String[23];
-		// ArrayList<String> arrayList = new ArrayList<String>();
 		var sb = new StringBuilder();
 		boolean inQuotes = false;
 		int index = 0;
@@ -77,17 +76,13 @@ public class Main {
 				}
 				else {
 					if (sb.length() != 0) {
-						// arrayList.add(sb.toString());
 						array[index] = sb.toString();
 						sb = new StringBuilder();
 						++index;
 					}
-					// temporary solution for empty string
+					// empty string
 					else {
-						sb.append("0");
-						// arrayList.add(sb.toString());
-						array[index] = sb.toString();
-						sb = new StringBuilder();
+						array[index] = Book.DEFAULT_VALUES[index];
 						++index;
 					}
 				}
@@ -96,15 +91,16 @@ public class Main {
 				sb.append(c);
 			}
 		}
-		// dump last string
-		// arrayList.add(sb.toString());
+
 		array[index] = sb.toString();
 		
-		// return arrayList.toArray(new String[0]);
 		return array;
 	}
 	
 	public static void main(String[] args) {
 		readCSV();
+		for (Book b : list) {
+			System.out.println(b);
+		}
 	}
 }
