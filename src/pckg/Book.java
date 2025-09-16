@@ -61,6 +61,19 @@ public class Book {
 		this.smallImageURL = smallImageURL;
 	}
 	
+	// Simple constructor
+	public Book(int bookID, String isbn, String authors, int initialPublicationYear, String title,
+			String languageCode,double averageRating) {
+		
+		this.bookID = bookID;
+		this.isbn = isbn;
+		this.authors = authors;
+		this.originalPublicationYear = initialPublicationYear;
+		this.title = title;
+		this.languageCode = languageCode;
+		this.averageRating = averageRating;
+	}
+	
 	@Override
 	public String toString() {
 		return bookID +
