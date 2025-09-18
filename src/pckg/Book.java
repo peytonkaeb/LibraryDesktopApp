@@ -10,7 +10,7 @@ public class Book {
 	int booksCount;
 	
 	String isbn;
-	String isbn13;
+	long isbn13;
 	
 	String authors;
 	int originalPublicationYear;
@@ -31,13 +31,8 @@ public class Book {
 	String imageURL;
 	String smallImageURL;
 	
-	public static final String[] DEFAULT_VALUES = {
-			"-1", "-1", "-1", "-1", "-1", "Unknown", "Unknown", "Unknown Authors", "-1", "Unknown Original Title",
-			"Unknown Title", "???", "0.0", "0", "0", "0", "0", "0", "0", "0", "0", "plceholder", "placeholder"
-	};
-	
 	public Book(int bookID, int goodreadsBookID, int bestBookID, int workID, int booksCount, String isbn,
-			String isbn13, String authors, int originalPublicationYear, String originalTitle, String title,
+			long isbn13, String authors, int originalPublicationYear, String originalTitle, String title,
 			String languageCode, double averageRating, int ratingsCount, int workRatingsCount,
 			int workTextReviewsCount, int ratings1, int ratings2, int ratings3, int ratings4, int ratings5,
 			String imageURL, String smallImageURL) {
