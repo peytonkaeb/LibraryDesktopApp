@@ -12,17 +12,27 @@ public class BookReader {
 	
 	public static final String[] DEFAULT_VALUES = {
 			"-1", "-1", "-1", "-1", "-1", // IDs
-			"Unknown", "0", 
+			"000000000X", "0", 
 			"Unknown Authors", "-1", "Unknown Original Title",
 			"Unknown Title", "???", "0.0", "0", "0", "0", "0", "0", "0", "0", "0", "plceholder", "placeholder"
 	};
 	
 	public static final String[] VALIDATION_REGEX = {
-			"\\d{0,5}", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*",
-			".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*", ".*"
+			"\\d{0,5}", "^\\d+$", "^\\d+$", "^\\d+$", "^\\d+$", // book IDs and count
+			"^\\d{0,9}[\\dX]$", "^\\d\\.\\d{1,12}e\\+12$", // isbn and isbn13 (stored in csv as scientific notation)
+			".*", // Authors
+			"\\d{1,4}(\\.\\d)?", // Year
+			".*",  ".*", // Titles
+			".*{3}", // Language code
+			".*", // Average rating
+			"^\\d+$", "^\\d+$", "^\\d+$", // Ratings counts
+			"^\\d+$", "^\\d+$", "^\\d+$", "^\\d+$", "^\\d+$", // Ratings 1-5
+			".*", ".*" // URLs (anything is allowed here because invalid URLs will be assigned with a default later)
 	};
 
 	public static List<Book> readBooks() {
+		
+		// Change this to ArrayList for different implementation
 		List<Book> list = new LinkedList<Book>();
 		try (FileInputStream fis = new FileInputStream("data/books.csv");
 				Scanner scnr = new Scanner(fis);) {
