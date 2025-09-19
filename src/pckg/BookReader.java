@@ -14,7 +14,7 @@ public class BookReader {
 			"-1", "-1", "-1", "-1", "-1", // IDs
 			"000000000X", "0", 
 			"Unknown Authors", "-1", "Unknown Original Title",
-			"Unknown Title", "???", "0.0", "0", "0", "0", "0", "0", "0", "0", "0", "plceholder", "placeholder"
+			"Unknown Title", "???", "0.0", "0", "0", "0", "0", "0", "0", "0", "0", "placeholder", "placeholder"
 	};
 	
 	public static final String[] VALIDATION_REGEX = {
@@ -23,7 +23,7 @@ public class BookReader {
 			".*", // Authors
 			"\\d{1,4}(\\.\\d)?", // Year
 			".*",  ".*", // Titles
-			".*{3}", // Language code
+			".*", // Language code
 			".*", // Average rating
 			"^\\d+$", "^\\d+$", "^\\d+$", // Ratings counts
 			"^\\d+$", "^\\d+$", "^\\d+$", "^\\d+$", "^\\d+$", // Ratings 1-5

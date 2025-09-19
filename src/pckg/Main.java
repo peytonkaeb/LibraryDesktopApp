@@ -8,7 +8,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		for (Book b : list) {
+		for (Book b : Sort.byPublicationYear(list)) {
 			System.out.println(b);
 		}
 		
