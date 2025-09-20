@@ -74,31 +74,42 @@ public class Book {
 		this.averageRating = averageRating;
 	}
 	
-	// toString() override for clean debugging
+    // Getters and setters
+    public int getBookId() { return bookID; }
+    public String getTitle() { return title; }
+    public String getAuthors() { return authors; }
+    public double getAverageRating() { return averageRating; }
+    public String getIsbn() { return isbn; }
+	
 	@Override
-	public String toString() {
+    public String toString() {
+        return bookID + ": " + title + " by " + authors + " (Rating: " + averageRating + ")";
+    }
+	
+	// toString() alternative implementation for debugging
+	public String toStringLong() {
 		return "book_id: " + bookID + " " +
-		"goodreads_book_id: " + goodreadsBookID + " " +
-		"best_book_id: " + bestBookID + " " +
-		"work_id: " + workID + " " +
-		"books_count: " + booksCount + " " +
-		"isbn: " + isbn + " " +
-		"isbn13: " + isbn13 + " " +
-		"authors: " + authors + " " +
-		"original_publication_year: " + originalPublicationYear + " " +
-		"original_title: " + originalTitle + " " +
-		"title: " + title + " " +
-		"language_code: " + languageCode + " " +
-		"average_rating: " + averageRating + " " +
-		"ratings_count: " + ratingsCount + " " +
-		"work_ratings_count: " + workRatingsCount + " " +
-		"work_text_reviews_count: " + workTextReviewsCount + " " +
-		"ratings1: " + ratings1 + " " +
-		"ratings2: " + ratings2 + " " +
-		"ratings3: " + ratings3 + " " +
-		"ratings4: " + ratings4 + " " +
-		"ratings5: " + ratings5 + " " +
-		"image_url: " + imageURL + " " +
-		"small_image_url: " + smallImageURL;
-	}
+			"goodreads_book_id: " + goodreadsBookID + " " +
+			"best_book_id: " + bestBookID + " " +
+			"work_id: " + workID + " " +
+			"books_count: " + booksCount + " " +
+			"isbn: " + isbn + " " +
+			"isbn13: " + isbn13 + " " +
+			"authors: " + authors + " " +
+			"original_publication_year: " + originalPublicationYear + " " +
+			"original_title: " + originalTitle + " " +
+			"title: " + title + " " +
+			"language_code: " + languageCode + " " +
+			"average_rating: " + averageRating + " " +
+			"ratings_count: " + ratingsCount + " " +
+			"work_ratings_count: " + workRatingsCount + " " +
+			"work_text_reviews_count: " + workTextReviewsCount + " " +
+			"ratings1: " + ratings1 + " " +
+			"ratings2: " + ratings2 + " " +
+			"ratings3: " + ratings3 + " " +
+			"ratings4: " + ratings4 + " " +
+			"ratings5: " + ratings5 + " " +
+			"image_url: " + imageURL + " " +
+			"small_image_url: " + smallImageURL;
+		}
 }

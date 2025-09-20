@@ -161,9 +161,9 @@ public class Layout extends JFrame {
                     listFrame.setVisible(true);
 
                     // Timer to close after a few seconds
-                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
-                    timer.setRepeats(false);
-                    timer.start();
+//                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
+//                    timer.setRepeats(false);
+//                    timer.start();
                 });
             
             JButton button6 = new JButton("Sort by Author Descending");
@@ -190,67 +190,65 @@ public class Layout extends JFrame {
                     listFrame.setVisible(true);
 
                     // Timer to close after a few seconds
-                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
-                    timer.setRepeats(false);
-                    timer.start();
+//                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
+//                    timer.setRepeats(false);
+//                    timer.start();
                 });
-            JButton button7 = new JButton("Sort by ISBN Ascending");
+            JButton button7 = new JButton("Sort by Publication Year Ascending");
             button7.setBounds(50, 150, 200, 30);
             panel.add(button7);
 
-            // commented out until isbnAscending is implemented
-//                button7.addActionListener(e4 -> {
-//                    JFrame listFrame = new JFrame("Sorted List");
-//                    listFrame.setSize(300, 400);
-//                    listFrame.setLocationRelativeTo(null);
-//
-//                    JTextArea textArea = new JTextArea();
-//                    textArea.setEditable(false);
-//
-//                    sort sorter = new sort();
-//                    sorter.isbnAscending();
-//
-//                    // Print the sorted list to the text area
-//                    for (BookReader book : BookReader.booksList) {
-//                        textArea.append(book.isbn + " - " + book.title + "\n"); 
-//                    }
-//
-//                    listFrame.add(new JScrollPane(textArea));
-//                    listFrame.setVisible(true);
-//
-//                    // Timer to close after a few seconds
+                button7.addActionListener(e4 -> {
+                    JFrame listFrame = new JFrame("Sorted List");
+                    listFrame.setSize(300, 400);
+                    listFrame.setLocationRelativeTo(null);
+
+                    JTextArea textArea = new JTextArea();
+                    textArea.setEditable(false);
+
+                    List<Book> sortedList = Sort.byPublicationYearAscending(Main.list);
+
+                    // Print the sorted list to the text area
+                    for (Book book : sortedList) {
+                        textArea.append(book.originalPublicationYear + " - " + book.title + "\n"); 
+                    }
+
+                    listFrame.add(new JScrollPane(textArea));
+                    listFrame.setVisible(true);
+
+                    // Timer to close after a few seconds
 //                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
 //                    timer.setRepeats(false);
 //                    timer.start();
-//                });
-            JButton button8 = new JButton("Sort by ISBN Descending");
+                });
+                
+            JButton button8 = new JButton("Sort by Publication Year Descending");
             button8.setBounds(50, 200, 200, 30);
             panel.add(button8);
 
-//                button8.addActionListener(e5 -> {
-//                    JFrame listFrame = new JFrame("Sorted List");
-//                    listFrame.setSize(300, 400);
-//                    listFrame.setLocationRelativeTo(null);
-//
-//                    JTextArea textArea = new JTextArea();
-//                    textArea.setEditable(false);
-//
-//                    sort sorter = new sort();
-//                    sorter.isbnDescending();
-//
-//                    // Print the sorted list to the text area
-//                    for (BookReader book : BookReader.booksList) {
-//                        textArea.append(book.isbn + " - " + book.title + "\n"); 
-//                    }
-//
-//                    listFrame.add(new JScrollPane(textArea));
-//                    listFrame.setVisible(true);
-//
-//                    // Timer to close after a few seconds
+                button8.addActionListener(e5 -> {
+                    JFrame listFrame = new JFrame("Sorted List");
+                    listFrame.setSize(300, 400);
+                    listFrame.setLocationRelativeTo(null);
+
+                    JTextArea textArea = new JTextArea();
+                    textArea.setEditable(false);
+
+                    List<Book> sortedList = Sort.byPublicationYearDescending(Main.list);
+
+                    // Print the sorted list to the text area
+                    for (Book book : sortedList) {
+                        textArea.append(book.originalPublicationYear + " - " + book.title + "\n"); 
+                    }
+
+                    listFrame.add(new JScrollPane(textArea));
+                    listFrame.setVisible(true);
+
+                    // Timer to close after a few seconds
 //                    Timer timer = new Timer(2000, ev -> listFrame.dispose());
 //                    timer.setRepeats(false);
 //                    timer.start();
-//                });
+                });
 
             newFrame.add(panel);
             newFrame.setVisible(true);

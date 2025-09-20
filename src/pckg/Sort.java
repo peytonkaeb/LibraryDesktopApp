@@ -60,7 +60,7 @@ public class Sort {
 	public static List<Book> alphabeticallyAscending(List<Book> list){
         boolean swapped;
         int n = list.size();
-        do{
+        do {
             swapped = false;
             for (int i = 0; i < n-1; i++) {
                 Book current = list.get(i);
@@ -71,10 +71,13 @@ public class Sort {
                     list.set(i, next);
                     list.set(i+1, current);
                     swapped = true;
+                    
                 }
             }
 
-        }while (swapped); // this makes the "do" run as long as the condition works 
+            n--;
+            System.out.println("List size: " + n);
+        } while (swapped); // this makes the "do" run as long as the condition works 
         //If you want to check: System.out.println(BookReader.booksList);
         
         return list;
@@ -83,7 +86,7 @@ public class Sort {
     public static List<Book> alphabeticallyDescending(List<Book> list){
         boolean swapped;
         int n = list.size();
-        do{
+        do {
             swapped = false;
             for (int i = 0; i < n-1; i++) {
                 Book current = list.get(i);
@@ -97,7 +100,7 @@ public class Sort {
                 }
             }
 
-        }while (swapped); // this makes the "do" run as long as the condition works 
+        } while (swapped); // this makes the "do" run as long as the condition works 
         
         return list;
     }
@@ -153,5 +156,6 @@ public class Sort {
 		
 		return sortedList;
 	}
+	
 	
 }
