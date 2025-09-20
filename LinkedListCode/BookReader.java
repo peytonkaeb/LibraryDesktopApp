@@ -2,20 +2,22 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
+import javax.swing.SwingUtilities;
+
 
 public class BookReader {
 
-    private int book_id;
+    public int book_id;
     private int goodreads_book_id;
     private int best_book_id;
     private int work_id;
     private int books_count;
-    private double isbn;
+    public double isbn;
     private double isbn13;
-    private String authors;
+    public String authors;
     private int original_publication_year;
     private String original_title;
-    private String title;
+    public String title;
     private String language_code;
     private double average_rating;
     private int ratings_count;
@@ -64,16 +66,18 @@ public class BookReader {
         }
     }
 
+    //-------------------- main ------------------------
     public static void loadBooks(String filePath) {
+        //1: read csv and store it in a linked list
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             br.readLine(); // skip header
 
             while ((line = br.readLine()) != null) {
-
+                // Split on commas not inside quotes
                 String[] fields = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-
+                // Remove quotes from quoted fields
                 for (int i = 0; i < fields.length; i++) {
                     fields[i] = fields[i].replaceAll("^\"|\"$", "");
                 }
@@ -87,16 +91,32 @@ public class BookReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+        
+        //2: set up gui frame:    
+        SwingUtilities.invokeLater(() -> {
+            new layout(); // Call your GUI class
+        });
 
+
+
+    }
+//---------------- end of main --------------
     @Override
     public String toString() {
-        return book_id + ": " + title + " by " + authors + " (Rating: " + ratings_5 + ")";
+        return book_id + ": " + title + " by " + authors + " (Rating: " + ratings_5 + ")" + " isbn: " + isbn;
     }
 
     public static void main(String[] args) {
         String filePath = "C://Users//peyto//Downloads//Book-15Rows.csv";
         loadBooks(filePath);
         System.out.println("First book loaded: " + booksList.peekFirst());
+        sort Sort = new sort();
+        Sort.isbnAscending();
+        Sort.isbnDescending();
     }
+
+
+    
+
+
 }
