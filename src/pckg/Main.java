@@ -2,17 +2,17 @@ package pckg;
 
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
 	
 	static List<Book> list = BookReader.readBooks();
 	
 	public static void main(String[] args) {
 
-		for (Book b : Sort.byPublicationYear(list)) {
-			System.out.println(b);
-		}
-		
-		System.out.println(list.size());
+        SwingUtilities.invokeLater(() -> {
+            new Layout();
+        });
 		
 	}
 }
