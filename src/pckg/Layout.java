@@ -99,13 +99,19 @@ public class Layout extends JFrame {
                 try {
                     int bookId = Integer.parseInt(input);
                     
-                    ArrayList<Book> convertedList = new ArrayList<Book>(Main.list);
+                    if (bookId > 10000) {
+                    	throw new NumberFormatException(); // Checks if input is an ISBN
+                    }
+                    
+                    ArrayList<Book> convertedList = new ArrayList<Book>(Sort.byID(Main.list));
+                    
+                    
                     
                     foundBook = Search.byID(convertedList, bookId);
                 } catch (NumberFormatException nfe1) {
                     try {
                         String isbn = input;
-                        ArrayList<Book> convertedList = new ArrayList<Book>(Main.list);
+                        ArrayList<Book> convertedList = new ArrayList<Book>(Sort.byISBN(Main.list));
                         
                         foundBook = Search.byISBN(convertedList, isbn);
                     } catch (NumberFormatException nfe2) {

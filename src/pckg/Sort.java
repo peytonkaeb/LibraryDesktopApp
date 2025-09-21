@@ -76,7 +76,6 @@ public class Sort {
             }
 
             n--;
-            System.out.println("List size: " + n);
         } while (swapped); // this makes the "do" run as long as the condition works 
         //If you want to check: System.out.println(BookReader.booksList);
         

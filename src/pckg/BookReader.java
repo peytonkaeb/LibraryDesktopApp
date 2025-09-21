@@ -34,7 +34,7 @@ public class BookReader {
 		
 		// Change this to ArrayList for different implementation
 		List<Book> list = new LinkedList<Book>();
-		try (FileInputStream fis = new FileInputStream("data/books1000.csv");
+		try (FileInputStream fis = new FileInputStream("data/books.csv");
 				Scanner scnr = new Scanner(fis);) {
 			
 			// Consume header
