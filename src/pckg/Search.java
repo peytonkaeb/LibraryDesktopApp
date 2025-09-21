@@ -83,7 +83,7 @@ public class Search {
 		long totalTime;
 		
 		Sort.byISBN(arrayList);
-		startTime = System.nanoTime();
+		startTime = System.currentTimeMillis();
 		byISBN(arrayList, "345418263");
 		endTime = System.currentTimeMillis();
 		totalTime = startTime - endTime;
